@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#define NUMBER 100 //—v‘f”NUMBER‚Í100
+#define NUMBER 100 //è¦ç´ æ•°NUMBERã¯100
 
-//ŠÖ”éŒ¾
+//é–¢æ•°å®£è¨€
 void exchange(int d[],int i, int j);
 void exchange2(int *x, int *y);
 void Selection(int data[]);
@@ -17,7 +17,7 @@ int main(){
 	char filename[200];
 	char file[200];
 	char extension[200];
-	//ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
+	//ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿
 	fp=fopen("sample.txt","r");
 	if (fp==NULL){
 		printf("can't open a file\n");
@@ -26,62 +26,62 @@ int main(){
 	for(int i=0;i<NUMBER;i++)fscanf(fp,"%d",&number[i]);
 	fclose(fp);
 	
-	//“Ç‚İ‚İI‚í‚è
+	//èª­ã¿è¾¼ã¿çµ‚ã‚ã‚Š
 	
 	Selection(number);
-	printf("¬‚³‚¢‡\n");
+	printf("å°ã•ã„é †\n");
 	Display(number);
 	Selection2(number);
-	printf("\n‘å‚«‚¢‡\n");	
+	printf("\nå¤§ãã„é †\n");	
 	Display(number);
 	return 0;
 }
-//ŒğŠ·(”z—ñ)
+//äº¤æ›(é…åˆ—)
 void exchange(int d[],int i, int j){
 	int tmp;
-	tmp	=d[i];
+	tmp =d[i];
 	d[i]=d[j];
 	d[j]=tmp;
 
 }
-//ŒğŠ·iƒ|ƒCƒ“ƒ^)
+//äº¤æ›ï¼ˆãƒã‚¤ãƒ³ã‚¿)
 void exchange2(int *x, int *y){
 	int tmp;
 	tmp =*x;
-	*x	=*y;
-	*y	=tmp;
+	*x  =*y;
+	*y  =tmp;
 }
-//¬‚³‚¢‡
+//å°ã•ã„é †
 void Selection(int data[]){
 	int min;
 	for(int i=NUMBER;0<i;i--){
 		min=0;
 		for(int j=0;j<i;j++){
 			if(data[min]<data[j]){
-			//‘å‚«‚¢‡‚É‚·‚é‚Æ‚«‚Íif“à‚Ìƒ‚ğ„‚É‚·‚é
+			//å¤§ãã„é †ã«ã™ã‚‹ã¨ãã¯ifå†…ã®ï¼œã‚’ï¼ã«ã™ã‚‹
 				min=j;
 			}
 		}
-		//exchange(data,min,i-1);	//”z—ñ
-		exchange2(&data[min],&data[i-1]);	//ƒ|ƒCƒ“ƒ^
+		//exchange(data,min,i-1);	//é…åˆ—
+		exchange2(&data[min],&data[i-1]);	//ãƒã‚¤ãƒ³ã‚¿
 	}
 }
-//‘å‚«‚¢‡
+//å¤§ãã„é †
 void Selection2(int data[]){
 	int min;
 	for(int i=NUMBER;0<i;i--){
 		min=0;
 		for(int j=0;j<i;j++){
 			if(data[min]>data[j]){
-			//‘å‚«‚¢‡‚É‚·‚é‚Æ‚«‚Íif“à‚Ì„‚ğƒ‚É‚·‚é
+			//å¤§ãã„é †ã«ã™ã‚‹ã¨ãã¯ifå†…ã®ï¼ã‚’ï¼œã«ã™ã‚‹
 				min=j;
 			}
 		}
-		//exchange(data,min,i-1);	//”z—ñ
-		exchange2(&data[min],&data[i-1]);	//ƒ|ƒCƒ“ƒ^
+		//exchange(data,min,i-1);	//é…åˆ—
+		exchange2(&data[min],&data[i-1]);	//ãƒã‚¤ãƒ³ã‚¿
 	}
 }
-//•\¦
+//è¡¨ç¤º
 void Display(int number[]){
 	for(int i=0;i<10;i++){
 		for(int j=0;j<10;j++){
