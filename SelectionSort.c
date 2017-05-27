@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define NUMBER 100 //要素数NUMBERは100
 
@@ -7,33 +8,31 @@ void exchange(int d[],int i, int j);
 void exchange2(int *x, int *y);
 void Selection(int data[]);
 void Selection2(int data[]);
-void Display(int number[]);
 
+//表示
+void Display(int number[],int pattern){
+  if(pattern==1){
+    for(int i=0;i<100;i++){
+        printf("%3d",number[i]);
+        if(i!=0 && i%10==0)	printf("\n");
+    }
+  }else if(pattern==2){
+    for(int i=100-1;i>=0;i--){
+        printf("%3d",number[i]);
+        if(i!=0 && i%10==0)	printf("\n");
+    }
+  }
+}
 //main
 int main(){
-
-	FILE *fp;
 	int number[NUMBER];
-	char filename[200];
-	char file[200];
-	char extension[200];
-	//ファイルの読み込み
-	fp=fopen("sample.txt","r");
-	if (fp==NULL){
-		printf("can't open a file\n");
-		exit(1);
-	}
-	for(int i=0;i<NUMBER;i++)fscanf(fp,"%d",&number[i]);
-	fclose(fp);
-	
-	//読み込み終わり
-	
+	for(int i=0;i<NUMBER;i++) number[i]=rand()%100;
+
 	Selection(number);
 	printf("小さい順\n");
-	Display(number);
-	Selection2(number);
-	printf("\n大きい順\n");	
-	Display(number);
+	Display(number,1);
+	printf("\n大きい順\n");
+	Display(number,2);
 	return 0;
 }
 //交換(配列)
@@ -52,8 +51,6 @@ void exchange2(int *x, int *y){
 	*y  =tmp;
 }
 /*
-これはダメ
-(tmp をポインタにしている)
 void exchange2(int *x, int *y){
 	int *tmp;
 	*tmp =*x;
@@ -76,28 +73,3 @@ void Selection(int data[]){
 		exchange2(&data[min],&data[i-1]);	//ポインタ
 	}
 }
-//大きい順
-void Selection2(int data[]){
-	int min;
-	for(int i=NUMBER;0<i;i--){
-		min=0;
-		for(int j=0;j<i;j++){
-			if(data[min]>data[j]){
-			//大きい順にするときはif内の＞を＜にする
-				min=j;
-			}
-		}
-		//exchange(data,min,i-1);	//配列
-		exchange2(&data[min],&data[i-1]);	//ポインタ
-	}
-}
-//表示
-void Display(int number[]){
-	for(int i=0;i<10;i++){
-		for(int j=0;j<10;j++){
-			printf("%3d",number[10*i+j]);
-		}
-		printf("\n");
-	}
-}
-
