@@ -51,6 +51,16 @@ void exchange2(int *x, int *y){
 	*x  =*y;
 	*y  =tmp;
 }
+/*
+これはダメ
+(tmp をポインタにしている)
+void exchange2(int *x, int *y){
+	int *tmp;
+	*tmp =*x;
+	*x  =*y;
+	*y  =tmp;
+}
+*/
 //小さい順
 void Selection(int data[]){
 	int min;
