@@ -2,19 +2,19 @@
 
 /*
 
-^‹U”»’è
+çœŸå½åˆ¤å®š
 
 if(x)printf("a");
 if(x==1)printf("a");
-‚Í“¯‚¶
+ã¯åŒã˜
 
 if(x)printf("a");
-if(x<=1)printf("a");
-‚Í“¯‚¶
+if(x>=1)printf("a");
+ã¯åŒã˜
 
 if(!x)printf("b");
 of(x==0)prinf("b");
-‚Í“¯‚¶
+ã¯åŒã˜
 
 */
 
@@ -24,7 +24,7 @@ int main(){
 	
 	if(x==1)printf("x\n");
 	if(y==0)printf("y\n");
-	if(z<=1)printf("z\n");
+	if(z>=1)printf("z\n");
 	
 	if(x2)printf("xx\n");
 	if(!y2)printf("yy\n");
