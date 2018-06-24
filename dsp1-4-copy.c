@@ -35,37 +35,21 @@ void FileWrite(char filename[],double data[]){
 	}
 	fclose(fp);
 }
-//内積
-double InnerProduct(double a[],double b[],int N){
-	//二本のベクトルと要素数を入力して内積を出力
-	double c=0;
-	double sum=0;
-	for(int i=0;i<N;i++){
-		c=a[i]*b[i];
-		//printf("c=%f a[i]=%f b[i]=%f\n",c,a[i],b[i]);
-		sum=sum+c;
-		//printf("sum=%f\n",sum);
-	}
-	return sum;
-}
-//配列内のデータをずらす関数
-void ShiftArray(double a[],double b[] ,int m){	
-	//aの配列をmこ右にずらし、0を代入する。
-	int i;
-	for(i=0;i<DATASIZE-m;i++)b[i]=a[i+m];
-	for(i=0;i<m;i++){
-		b[DATASIZE-i]=0.0;
-	}
-}
 //相互相関係数の算出
 void Calculation(double data1[],double data2[],double Rxy[]){
-	int i;
+	int i,m,j,sum;
 	double data2_m[DATASIZE]={0}; //mだけずらした配列
-	for(i=0;i<DATASIZE-1;i++){
-		ShiftArray(data2,data2_m,i); //data2_mにiずらした配列が代入される
-		Rxy[i]=InnerProduct(data1,data2_m,DATASIZE); //XとYi+mの内積を求める
-        Rxy[i]/=DATASIZE;
+	for(m=0;m<DATASIZE-1;m++){
+		sum=0;
+		for(i=0;i<DATASIZE-1-m;i++){
+			j=m+i;
+			sum+=data1[i]*data2[j];
+		}
+		sum/=DATASIZE;
+        Rxy[m]=sum;
+		printf("Rxy[%d]=%f",m,Rxy[m]);
 	}
+	//printf("Rxy[700]=%f",m,Rxy[700]);
 	//printf("| LINE : %d | function : %s |",__LINE__,__FUNCTION__);
 }
 
@@ -83,5 +67,6 @@ int main(){
 	Calculation(data1,data2,Rxy);
 	//fileへの書き込み
 	char fname3[]="c.txt"; //出力ファイル名
+	FileWrite(fname3,Rxy);
 	return 0;
 }
