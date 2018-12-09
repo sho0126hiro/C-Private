@@ -13,7 +13,7 @@ if(x>=1)printf("a");
 は同じ
 
 if(!x)printf("b");
-of(x==0)prinf("b");
+if(x==0)prinf("b");
 は同じ
 
 */
